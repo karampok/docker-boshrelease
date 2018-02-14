@@ -19,6 +19,11 @@ resource_types:
   source:
     repository: jtarchie/pr
 
+- name: gcs
+  type: docker-image
+  source:
+    repository: frodenas/gcs-resource
+
 resources:
 - name: git-docker-boshrelease
   type: git
@@ -52,17 +57,15 @@ resources:
 - name: github-release
   type: github-release
   source:
-    user: cfcr
+    user: karampok
     repository: docker-boshrelease
     access_token: ((github-kubo-gitbot-access-token))
 
 - name: s3-tarball
-  type: s3
+  type: gcs
   source:
     bucket: docker-boshrelease
-    region_name: us-east-1
-    access_key_id: invalid
-    secret_access_key: invalid
+    json_key: ((gcs-json-key))
     regexp: docker-(.*).tgz
 
 - name: ubuntu-trusty-stemcell-gcp
@@ -229,8 +232,8 @@ jobs:
         AWS_ACCESS_KEY:  ((gcs-access-key-id))
         AWS_SECRET_KEY: ((gcs-secret-access-key))
         BRANCH: master
-        GIT_EMAIL: invalid
-        GIT_NAME: invalid
+        GIT_EMAIL: "cfcr+cibot@pivotal.io"
+        GIT_NAME: "CFCR CI BOT"
         GITHUB_OWNER: cloudfoundry-community
         NOTIFICATION_OUT: notifications
         RELEASE_ROOT: gh

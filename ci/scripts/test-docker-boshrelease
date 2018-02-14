@@ -9,14 +9,6 @@ function setup_socks5_proxy() {
   export BOSH_ALL_PROXY="ssh+socks5://${PROXY_USERNAME}@${PROXY_IP}:22?private-key=${ROOT}/proxy_private_key"
 }
 
-function create_release() {
-  echo "Create dev release..."
-  pushd git-docker-boshrelease > /dev/null
-    bosh create-release --force --timestamp-version
-    bosh upload-release
-  popd > /dev/null
-}
-
 function upload_stemcell() {
   echo "Upload stemcell..."
   bosh upload-stemcell stemcell/stemcell.tgz
@@ -55,7 +47,6 @@ function cleanup() {
 function main() {
   trap cleanup EXIT SIGTERM SIGINT
   setup_socks5_proxy
-  #create_release
   upload_stemcell
   create_ops_files
   deploy
