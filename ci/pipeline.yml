@@ -57,9 +57,9 @@ resources:
 - name: github-release
   type: github-release
   source:
-    user: karampok
+    owner: karampok
     repository: docker-boshrelease
-    access_token: ((github-kubo-gitbot-access-token))
+    access_token: ((github-token-key))
 
 - name: s3-tarball
   type: gcs
