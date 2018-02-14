@@ -96,6 +96,6 @@ update:
 
 releases:
 - name: docker
-  version: 32.3.0
-  url: https://github.com/cloudfoundry-community/docker-boshrelease/releases/download/v32.3.0/docker-32.3.0.tgz
-  sha1: 9fe1248fd3143e05b76a85dfbf0bfd12ef46eea6
+  version: 32.4.0
+  url: https://github.com/cloudfoundry-community/docker-boshrelease/releases/download/v32.4.0/docker-32.4.0.tgz
+  sha1: 1bba72502a40dbb90a625ebe86990cb958cc1a53
