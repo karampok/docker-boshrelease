@@ -23,14 +23,14 @@ resources:
 - name: git-docker-boshrelease
   type: git
   source:
-    uri: git@github.com:cloudfoundry-incubator/docker-boshrelease
-    branch: tmp/kubo-ci
+    uri: git@github.com:karampok/docker-boshrelease
+    branch: master
     private_key: ((git-ssh-key))
 
 - name: git-pull-requests
   type: pull-request
   source:
-    repo: cloudfoundry-incubator/docker-boshrelease
+    repo: karampok/docker-boshrelease
     base: master
     private_key: ((git-ssh-key))
     access_token: ((github-token-key))
@@ -52,7 +52,7 @@ resources:
 - name: github-release
   type: github-release
   source:
-    user: cloudfoundry-incubator
+    user: cfcr
     repository: docker-boshrelease
     access_token: ((github-kubo-gitbot-access-token))
 
