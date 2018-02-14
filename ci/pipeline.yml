@@ -226,8 +226,8 @@ jobs:
     - task: release
       file: git-docker-boshrelease/ci/tasks/ship-it.yml
       params:
-        AWS_ACCESS_KEY: invalid
-        AWS_SECRET_KEY: invalid
+        AWS_ACCESS_KEY:  ((gcs-access-key-id))
+        AWS_SECRET_KEY: ((gcs-secret-access-key))
         BRANCH: master
         GIT_EMAIL: invalid
         GIT_NAME: invalid
